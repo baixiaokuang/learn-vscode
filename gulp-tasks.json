@@ -1,0 +1,697 @@
+{
+	"label": "Tasks for ~\\src\\vscode\\learn-vscode\\gulpfile.js",
+	"nodes": [
+		{ "label": "extract-editor-src", "type": "task", "nodes": [] },
+		{ "label": "editor-distro", "type": "task", "nodes": [] },
+		{ "label": "monacodts", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:configuration-editing",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:configuration-editing",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:configuration-editing",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:css-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:css-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:css-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:css-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:css-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:css-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:debug-auto-launch",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:debug-auto-launch",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:debug-auto-launch",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:debug-server-ready",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:debug-server-ready",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:debug-server-ready",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "transpile-extension:emmet", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:emmet", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:emmet", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:extension-editing",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:extension-editing",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:extension-editing",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "transpile-extension:git", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:git", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:git", "type": "task", "nodes": [] },
+		{ "label": "transpile-extension:git-base", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:git-base", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:git-base", "type": "task", "nodes": [] },
+		{ "label": "transpile-extension:github", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:github", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:github", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:github-authentication",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:github-authentication",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:github-authentication",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "transpile-extension:grunt", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:grunt", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:grunt", "type": "task", "nodes": [] },
+		{ "label": "transpile-extension:gulp", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:gulp", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:gulp", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:html-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:html-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:html-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:html-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:html-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:html-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "transpile-extension:ipynb", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:ipynb", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:ipynb", "type": "task", "nodes": [] },
+		{ "label": "transpile-extension:jake", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:jake", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:jake", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:json-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:json-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:json-language-features-client",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:json-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:json-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:json-language-features-server",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:markdown-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:markdown-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:markdown-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:markdown-math",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "compile-extension:markdown-math", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:markdown-math", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:media-preview",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "compile-extension:media-preview", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:media-preview", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:merge-conflict",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:merge-conflict",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "watch-extension:merge-conflict", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:mermaid-chat-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:mermaid-chat-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:mermaid-chat-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:terminal-suggest",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:terminal-suggest",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:terminal-suggest",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:microsoft-authentication",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:microsoft-authentication",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:microsoft-authentication",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:notebook-renderers",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:notebook-renderers",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:notebook-renderers",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "transpile-extension:npm", "type": "task", "nodes": [] },
+		{ "label": "compile-extension:npm", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:npm", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:php-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:php-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:php-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:references-view",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:references-view",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "watch-extension:references-view", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:search-result",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "compile-extension:search-result", "type": "task", "nodes": [] },
+		{ "label": "watch-extension:search-result", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:simple-browser",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:simple-browser",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "watch-extension:simple-browser", "type": "task", "nodes": [] },
+		{
+			"label": "transpile-extension:tunnel-forwarding",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:tunnel-forwarding",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:tunnel-forwarding",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:typescript-language-features-web",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:typescript-language-features-web",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:typescript-language-features-web",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:typescript-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:typescript-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:typescript-language-features",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:vscode-api-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:vscode-api-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:vscode-api-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:vscode-colorize-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:vscode-colorize-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:vscode-colorize-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:vscode-colorize-perf-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:vscode-colorize-perf-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:vscode-colorize-perf-tests",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:vscode-test-resolver",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:vscode-test-resolver",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:vscode-test-resolver",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:vscode-selfhost-test-provider",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:vscode-selfhost-test-provider",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:vscode-selfhost-test-provider",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "transpile-extension:vscode-selfhost-import-aid",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "compile-extension:vscode-selfhost-import-aid",
+			"type": "task",
+			"nodes": []
+		},
+		{
+			"label": "watch-extension:vscode-selfhost-import-aid",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "transpile-extensions", "type": "task", "nodes": [] },
+		{ "label": "compile-extensions", "type": "task", "nodes": [] },
+		{ "label": "watch-extensions", "type": "task", "nodes": [] },
+		{ "label": "compile-extensions-build-legacy", "type": "task", "nodes": [] },
+		{ "label": "compile-extension-media", "type": "task", "nodes": [] },
+		{ "label": "watch-extension-media", "type": "task", "nodes": [] },
+		{ "label": "compile-extension-media-build", "type": "task", "nodes": [] },
+		{
+			"label": "compile-non-native-extensions-build",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "compile-native-extensions-build", "type": "task", "nodes": [] },
+		{ "label": "compile-extensions-build", "type": "task", "nodes": [] },
+		{ "label": "extensions-ci", "type": "task", "nodes": [] },
+		{ "label": "compile-extensions-build-pr", "type": "task", "nodes": [] },
+		{ "label": "extensions-ci-pr", "type": "task", "nodes": [] },
+		{ "label": "compile-web", "type": "task", "nodes": [] },
+		{ "label": "watch-web", "type": "task", "nodes": [] },
+		{ "label": "compile-api-proposal-names", "type": "task", "nodes": [] },
+		{ "label": "watch-api-proposal-names", "type": "task", "nodes": [] },
+		{ "label": "transpile-client-esbuild", "type": "task", "nodes": [] },
+		{ "label": "transpile-client", "type": "task", "nodes": [] },
+		{ "label": "compile-client", "type": "task", "nodes": [] },
+		{ "label": "watch-client", "type": "task", "nodes": [] },
+		{ "label": "compile", "type": "task", "nodes": [] },
+		{ "label": "watch", "type": "task", "nodes": [] },
+		{ "label": "default", "type": "task", "nodes": [] },
+		{ "label": "compile-cli", "type": "task", "nodes": [] },
+		{ "label": "watch-cli", "type": "task", "nodes": [] },
+		{ "label": "compile-build-without-mangling", "type": "task", "nodes": [] },
+		{ "label": "compile-build-with-mangling", "type": "task", "nodes": [] },
+		{ "label": "check-package-json", "type": "task", "nodes": [] },
+		{ "label": "hygiene", "type": "task", "nodes": [] },
+		{ "label": "minify-vscode-web", "type": "task", "nodes": [] },
+		{ "label": "compile-web-extensions-build", "type": "task", "nodes": [] },
+		{ "label": "vscode-web-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-web", "type": "task", "nodes": [] },
+		{ "label": "vscode-web-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-web-min", "type": "task", "nodes": [] },
+		{ "label": "node-win32-x64", "type": "task", "nodes": [] },
+		{ "label": "node-win32-arm64", "type": "task", "nodes": [] },
+		{ "label": "node-darwin-x64", "type": "task", "nodes": [] },
+		{ "label": "node-darwin-arm64", "type": "task", "nodes": [] },
+		{ "label": "node-linux-x64", "type": "task", "nodes": [] },
+		{ "label": "node-linux-armhf", "type": "task", "nodes": [] },
+		{ "label": "node-linux-arm64", "type": "task", "nodes": [] },
+		{ "label": "node-alpine-arm64", "type": "task", "nodes": [] },
+		{ "label": "node-linux-alpine", "type": "task", "nodes": [] },
+		{ "label": "node", "type": "task", "nodes": [] },
+		{ "label": "minify-vscode-reh", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-win32-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-win32-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-win32-x64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-win32-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-win32-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-win32-arm64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-win32-arm64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-win32-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-darwin-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-darwin-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-darwin-x64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-darwin-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-darwin-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-darwin-arm64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-darwin-arm64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-darwin-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-x64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-armhf-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-armhf", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-armhf-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-armhf-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-arm64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-arm64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-alpine-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-alpine-arm64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-alpine-arm64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-alpine-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-alpine-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-alpine", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-alpine-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-linux-alpine-min", "type": "task", "nodes": [] },
+		{ "label": "minify-vscode-reh-web", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-win32-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-win32-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-win32-x64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-win32-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-win32-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-win32-arm64", "type": "task", "nodes": [] },
+		{
+			"label": "vscode-reh-web-win32-arm64-min-ci",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "vscode-reh-web-win32-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-darwin-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-darwin-x64", "type": "task", "nodes": [] },
+		{
+			"label": "vscode-reh-web-darwin-x64-min-ci",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "vscode-reh-web-darwin-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-darwin-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-darwin-arm64", "type": "task", "nodes": [] },
+		{
+			"label": "vscode-reh-web-darwin-arm64-min-ci",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "vscode-reh-web-darwin-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-x64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-armhf-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-armhf", "type": "task", "nodes": [] },
+		{
+			"label": "vscode-reh-web-linux-armhf-min-ci",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "vscode-reh-web-linux-armhf-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-arm64", "type": "task", "nodes": [] },
+		{
+			"label": "vscode-reh-web-linux-arm64-min-ci",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "vscode-reh-web-linux-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-alpine-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-alpine-arm64", "type": "task", "nodes": [] },
+		{
+			"label": "vscode-reh-web-alpine-arm64-min-ci",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "vscode-reh-web-alpine-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-alpine-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-reh-web-linux-alpine", "type": "task", "nodes": [] },
+		{
+			"label": "vscode-reh-web-linux-alpine-min-ci",
+			"type": "task",
+			"nodes": []
+		},
+		{ "label": "vscode-reh-web-linux-alpine-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-symbols-win32-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-symbols-win32-arm64", "type": "task", "nodes": [] },
+		{ "label": "vscode-symbols-darwin", "type": "task", "nodes": [] },
+		{ "label": "vscode-symbols-linux-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-symbols-linux-armhf", "type": "task", "nodes": [] },
+		{ "label": "vscode-symbols-linux-arm64", "type": "task", "nodes": [] },
+		{ "label": "bundle-vscode", "type": "task", "nodes": [] },
+		{ "label": "minify-vscode", "type": "task", "nodes": [] },
+		{ "label": "core-ci", "type": "task", "nodes": [] },
+		{ "label": "core-ci-pr", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-x64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode", "type": "task", "nodes": [] },
+		{ "label": "vscode-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-arm64", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-arm64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-darwin-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-darwin-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-darwin-x64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-darwin-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-darwin-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-darwin-arm64", "type": "task", "nodes": [] },
+		{ "label": "vscode-darwin-arm64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-darwin-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-min-ci", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-min", "type": "task", "nodes": [] },
+		{ "label": "vscode-translations-export", "type": "task", "nodes": [] },
+		{ "label": "vscode-translations-import", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-prepare-deb", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-build-deb", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-prepare-rpm", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-build-rpm", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-prepare-snap", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-x64-build-snap", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-prepare-deb", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-build-deb", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-prepare-rpm", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-build-rpm", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-prepare-snap", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-armhf-build-snap", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-prepare-deb", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-build-deb", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-prepare-rpm", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-build-rpm", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-prepare-snap", "type": "task", "nodes": [] },
+		{ "label": "vscode-linux-arm64-build-snap", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-x64-system-setup", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-arm64-system-setup", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-x64-user-setup", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-arm64-user-setup", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-x64-inno-updater", "type": "task", "nodes": [] },
+		{ "label": "vscode-win32-arm64-inno-updater", "type": "task", "nodes": [] }
+	]
+}
