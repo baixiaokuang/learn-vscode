@@ -9,7 +9,7 @@ const fs = require('fs');
 const dirs = [
 	'',
 	'build',
-	'extensions',
+	// 'extensions',
 	// 'extensions/configuration-editing',
 	// 'extensions/css-language-features',
 	// 'extensions/css-language-features/server',
