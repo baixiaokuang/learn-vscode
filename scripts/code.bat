@@ -31,7 +31,9 @@ for %%A in (%*) do (
 )
 
 :: Launch Code
-%CODE% . %DISABLE_TEST_EXTENSION% %*
+@REM %CODE% . %DISABLE_TEST_EXTENSION% %*
+if not exist empty mkdir empty
+%CODE% . --builtin-extensions-dir=empty %*
 goto end
 
 :builtin

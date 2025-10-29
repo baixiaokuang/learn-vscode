@@ -284,12 +284,134 @@ Currently, there are no built-in environment variables to skip extension buildin
 
 4. **First-time Setup**: Even if you skip extension installation, VS Code can still download and install extensions from the marketplace at runtime if configured.
 
+## Disabling Local Built-in Extensions at Runtime
+
+Even after following all the build steps above, you may still see extensions like **Git**, **JavaScript Language Features**, **TypeScript Language Features**, etc. when running VS Code. These are **local built-in extensions** that come from the `extensions/` directory in the repository, which are separate from marketplace extensions.
+
+### How Local Extensions Are Loaded
+
+VS Code scans the `extensions/` directory at runtime based on the `builtinExtensionsPath` setting, defined in [src/vs/platform/environment/common/environmentService.ts](../src/vs/platform/environment/common/environmentService.ts#L111-L118):
+
+```typescript
+get builtinExtensionsPath(): string {
+    const cliBuiltinExtensionsDir = this.args['builtin-extensions-dir'];
+    if (cliBuiltinExtensionsDir) {
+        return resolve(cliBuiltinExtensionsDir);
+    }
+    // Defaults to ../extensions relative to the build output
+    return normalize(join(FileAccess.asFileUri('').fsPath, '..', 'extensions'));
+}
+```
+
+This directory contains ~100 local extensions including:
+
+- Language support: `typescript-language-features`, `javascript`, `html`, `css`, `json`, etc.
+- Core features: `git`, `git-base`, `emmet`, `markdown-language-features`
+- Themes: `theme-*` directories
+- Debugging: `debug-auto-launch`, `debug-server-ready`
+
+### Solution 1: Disable All Extensions with Command Line Flag
+
+The simplest way to run VS Code without ANY extensions (including local ones):
+
+```bash
+# On Windows
+.\scripts\code.bat --disable-extensions
+
+# On Unix/macOS
+./scripts/code.sh --disable-extensions
+```
+
+**Command line flag reference** from [src/vs/platform/environment/common/argv.ts](../src/vs/platform/environment/common/argv.ts#L90):
+
+- `--disable-extensions` - Disable all extensions
+- `--disable-extension <extension-id>` - Disable specific extensions (can be used multiple times)
+
+### Solution 2: Point to Empty Extensions Directory
+
+Run VS Code with a custom (empty) builtin extensions directory:
+
+```bash
+# Create an empty directory
+mkdir empty-extensions
+
+# Run VS Code pointing to it
+# On Windows
+.\scripts\code.bat --builtin-extensions-dir=empty-extensions
+
+# On Unix/macOS
+./scripts/code.sh --builtin-extensions-dir=empty-extensions
+```
+
+### Solution 3: Remove/Rename the extensions/ Directory
+
+> **Warning: This is destructive for development**
+
+```bash
+# Backup the extensions directory
+mv extensions extensions.backup
+
+# Create empty directory
+mkdir extensions
+
+# Run VS Code
+.\scripts\code.bat  # or ./scripts/code.sh
+```
+
+To restore:
+
+```bash
+rm -rf extensions
+mv extensions.backup extensions
+```
+
+### Solution 4: Modify Launch Scripts
+
+Edit the launch scripts to always pass `--disable-extensions`:
+
+**For Windows** - Edit [scripts/code.bat](../scripts/code.bat):
+
+```batch
+@echo off
+setlocal
+set ELECTRON_RUN_AS_NODE=1
+call "%~dp0\node.bat" "%~dp0\..\out\cli.js" --disable-extensions %*
+```
+
+**For Unix/macOS** - Edit [scripts/code.sh](../scripts/code.sh):
+
+```bash
+#!/usr/bin/env bash
+# Add --disable-extensions to the command
+exec "$CLI" --disable-extensions "$@"
+```
+
+### Verification
+
+To verify extensions are disabled, after launching VS Code:
+
+1. Open the Extensions view (Ctrl+Shift+X)
+2. You should see "No extensions found" or only see disabled extensions
+3. Check the Extensions list - builtin extensions should not appear
+
 ## Alternative: Include Only Specific Extensions
 
 Instead of building with no extensions, you might want to build with only a subset:
 
+### At Build Time
+
 1. Edit [build/npm/dirs.js](../build/npm/dirs.js) to include only needed extensions
 2. Edit [build/gulpfile.extensions.js](../build/gulpfile.extensions.js) lines 30-73 to include only needed tsconfig.json files
 3. Edit [product.json](../product.json) to include only needed built-in extensions
+4. Delete unwanted extension directories from `extensions/`
+
+### At Runtime
+
+Use `--disable-extension` to selectively disable extensions:
+
+```bash
+# Disable Git and GitHub extensions only
+.\scripts\code.bat --disable-extension vscode.git --disable-extension vscode.github
+```
 
 This gives you a lighter build while maintaining essential functionality.
