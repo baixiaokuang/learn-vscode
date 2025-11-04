@@ -27,13 +27,13 @@ ChatEditor (EditorPane)
 
 A bare-bones `ChatEditor` is useful for smoke testing or teaching the chat pipeline without pulling in agents, tools, or persistence. The minimal build focuses on wiring an input box to a transcript list and echoing the user prompt back.
 
-**Goals**
+### **Goals**
 
 - Reuse the existing `ChatWidget` so the user can type into the Monaco-powered input and see messages render in the list.
 - Persist conversation state in-memory via `IChatService.startSession`.
 - Register a single agent implementation that returns a canned response, proving the round-trip from input to output.
 
-**Implementation Steps**
+### **Implementation Steps**
 
 - **Bootstrap the editor input**: Implement `ChatEditorInput.resolve()` so it calls `this.chatService.startSession(ChatAgentLocation.Chat, CancellationToken.None, undefined, inputType)` (see `chatEditorInput.ts:182`). Store and return the resulting `ChatModel`; this gives you a transcript container without relying on serialized history.
 - **Render the widget**: In `ChatEditor.createEditor()`, create the scoped services and call `scopedInstantiationService.createInstance(ChatWidget, ...)` exactly as the production editor does. When `setInput()` is invoked, call `this.widget.setModel(editorModel, viewState)` so the widget binds to the in-memory chat model.
