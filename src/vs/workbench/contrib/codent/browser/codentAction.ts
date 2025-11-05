@@ -6,6 +6,7 @@
 import { localize2 } from '../../../../nls.js';
 import { Action2, registerAction2 } from '../../../../platform/actions/common/actions.js';
 import { ServicesAccessor } from '../../../../platform/instantiation/common/instantiation.js';
+import { IViewsService } from '../../../services/views/common/viewsService.js';
 
 export class CodentAction extends Action2 {
 	static readonly ID = 'codent.open';
@@ -14,19 +15,17 @@ export class CodentAction extends Action2 {
 		super({
 			id: CodentAction.ID,
 			title: localize2('codent.open', 'Open Codent'),
-			f1: true,
-			// menu: {
-			// 	id: CHAT_CONFIG_MENU_ID,
-			// 	when: ContextKeyExpr.equals('view', ChatViewId),
-			// 	order: 11,
-			// 	group: '0_level'
-			// },
+			f1: true
 		});
 	}
-	override run(accessor: ServicesAccessor, ...args: any[]): void {
-		console.log('Start Codent');
-	}
 
+	async run(accessor: ServicesAccessor): Promise<void> {
+		const viewsService = accessor.get(IViewsService);
+
+		// Open the chat view in the sidebar
+		await viewsService.openView('workbench.panel.chat.view.copilot');
+		console.log('Hello Codent');
+	}
 }
 
 registerAction2(CodentAction);
