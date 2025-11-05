@@ -424,5 +424,7 @@ import './contrib/dropOrPasteInto/browser/dropOrPasteInto.contribution.js';
 // Edit Telemetry
 import './contrib/editTelemetry/browser/editTelemetry.contribution.js';
 
+// Codent
+import './contrib/codent/browser/codent.contribution.js';
 
 //#endregion
