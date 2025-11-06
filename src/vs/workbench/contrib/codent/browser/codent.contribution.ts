@@ -31,26 +31,6 @@ const chatViewDescriptor: IViewDescriptor[] = [{
 	name: localize2('codent.viewContainer.label', "Codent"),
 	canToggleVisibility: false,
 	canMoveView: true,
-	// openCommandActionDescriptor: {
-	// 	id: CHAT_SIDEBAR_PANEL_ID,
-	// 	title: chatViewContainer.title,
-	// 	mnemonicTitle: localize({ key: 'miToggleChat', comment: ['&& denotes a mnemonic'] }, "&&Chat"),
-	// 	keybindings: {
-	// 		primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KeyI,
-	// 		mac: {
-	// 			primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyCode.KeyI
-	// 		}
-	// 	},
-	// 	order: 1
-	// },
 	ctorDescriptor: new SyncDescriptor(CodentViewPane),
-	// when: ContextKeyExpr.or(
-	// 	ContextKeyExpr.or(
-	// 		ChatContextKeys.Setup.hidden,
-	// 		ChatContextKeys.Setup.disabled
-	// 	)?.negate(),
-	// 	ChatContextKeys.panelParticipantRegistered,
-	// 	ChatContextKeys.extensionInvalid
-	// )
 }];
 Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry).registerViews(chatViewDescriptor, chatViewContainer);
