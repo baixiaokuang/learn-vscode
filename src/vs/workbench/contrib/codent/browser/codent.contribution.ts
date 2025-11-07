@@ -10,7 +10,7 @@ import { Registry } from '../../../../platform/registry/common/platform.js';
 import { ViewPaneContainer } from '../../../browser/parts/views/viewPaneContainer.js';
 import { IViewContainersRegistry, IViewDescriptor, IViewsRegistry, ViewContainer, ViewContainerLocation, Extensions as ViewExtensions } from '../../../common/views.js';
 import './codentAction.js';
-import { CodentService, ICodentService } from './codentService.js';
+import { CodentService, ICodentService } from '../common/codentService.js';
 import { CodentViewPane } from './codentViewPane.js';
 
 const CHAT_SIDEBAR_PANEL_ID = 'workbench.panel.codent';

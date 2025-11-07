@@ -5,7 +5,7 @@
 
 import * as dom from '../../../../base/browser/dom.js';
 import { Disposable } from '../../../../base/common/lifecycle.js';
-import { ICodentService } from './codentService.js';
+import { ICodentService } from '../common/codentService.js';
 
 const $ = dom.$;
 
