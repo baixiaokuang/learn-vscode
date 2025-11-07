@@ -5,6 +5,7 @@
 
 import * as dom from '../../../../base/browser/dom.js';
 import { Disposable } from '../../../../base/common/lifecycle.js';
+import { ICodentService } from './codentService.js';
 
 const $ = dom.$;
 
@@ -18,7 +19,9 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 	listContainer!: HTMLElement;
 	input!: HTMLElement;
 	title!: HTMLElement;
-	constructor() {
+	constructor(
+		@ICodentService private readonly codentService: ICodentService
+	) {
 		super();
 	}
 
@@ -39,6 +42,6 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 	}
 
 	private createList(listContainer: HTMLElement): void {
-
+		this.codentService.run();
 	}
 }

@@ -5,10 +5,12 @@
 
 import { localize2 } from '../../../../nls.js';
 import { SyncDescriptor } from '../../../../platform/instantiation/common/descriptors.js';
+import { InstantiationType, registerSingleton } from '../../../../platform/instantiation/common/extensions.js';
 import { Registry } from '../../../../platform/registry/common/platform.js';
 import { ViewPaneContainer } from '../../../browser/parts/views/viewPaneContainer.js';
 import { IViewContainersRegistry, IViewDescriptor, IViewsRegistry, ViewContainer, ViewContainerLocation, Extensions as ViewExtensions } from '../../../common/views.js';
 import './codentAction.js';
+import { CodentService, ICodentService } from './codentService.js';
 import { CodentViewPane } from './codentViewPane.js';
 
 const CHAT_SIDEBAR_PANEL_ID = 'workbench.panel.codent';
@@ -34,3 +36,5 @@ const chatViewDescriptor: IViewDescriptor[] = [{
 	ctorDescriptor: new SyncDescriptor(CodentViewPane),
 }];
 Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry).registerViews(chatViewDescriptor, chatViewContainer);
+
+registerSingleton(ICodentService, CodentService, InstantiationType.Delayed);
