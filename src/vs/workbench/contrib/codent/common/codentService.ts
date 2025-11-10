@@ -28,6 +28,6 @@ export class CodentService extends Disposable implements ICodentService {
 
 	async run() {
 		console.log('Running CodentService');
-		this.channel.call('sendMessage', 'Hello from workbench!');
+		// this.channel.call('sendMessage', 'Hello from workbench!');
 	}
 }
