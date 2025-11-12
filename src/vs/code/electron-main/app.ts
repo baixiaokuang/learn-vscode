@@ -123,6 +123,7 @@ import { IWebContentExtractorService } from '../../platform/webContentExtractor/
 import { NativeWebContentExtractorService } from '../../platform/webContentExtractor/electron-main/webContentExtractorService.js';
 import ErrorTelemetry from '../../platform/telemetry/electron-main/errorTelemetry.js';
 import { CodentChannel } from '../../platform/codent/electron-main/CodentChannel.js';
+import { CodentChannelId } from '../../platform/codent/common/CodentTypes.js';
 
 /**
  * The main VS Code application. There will only ever be one instance,
@@ -1243,7 +1244,7 @@ export class CodeApplication extends Disposable {
 
 		// Codent Channel
 		const codentChannel = new CodentChannel();
-		mainProcessElectronServer.registerChannel('codent-channel', codentChannel);
+		mainProcessElectronServer.registerChannel(CodentChannelId, codentChannel);
 	}
 
 	private async openFirstWindow(accessor: ServicesAccessor, initialProtocolUrls: IInitialProtocolUrls | undefined): Promise<ICodeWindow[]> {

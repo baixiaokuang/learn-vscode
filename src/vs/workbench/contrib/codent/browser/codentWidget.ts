@@ -18,7 +18,7 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 	container!: HTMLElement;
 	listContainer!: HTMLElement;
 	input!: HTMLElement;
-	title!: HTMLElement;
+	content!: HTMLElement;
 	constructor(
 		@ICodentService private readonly codentService: ICodentService
 	) {
@@ -27,21 +27,25 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 
 	render(parent: HTMLElement) {
 		this.container = dom.append(parent, $('.interactive-session'));
-		this.title = dom.append(this.container, $('p.title', {}, 'Hello World!'));
+		this.content = dom.append(this.container, $('p.title'));
 		this.listContainer = dom.append(this.container, $(`.interactive-list`));
 		this.createInput(this.container);
 		this.createList(this.listContainer);
 	}
 
 	private createInput(container: HTMLElement, options?: { renderFollowups: boolean; renderStyle?: 'compact' | 'minimal' }): void {
-		this.input = dom.append(container, $('input.interactive-session.chat-input-container'));
+		this.input = dom.append(container, $('input'));
 		const button = dom.append(container, $('button', {}, 'Send'));
 		button.onclick = () => {
-			this.title.innerText = (this.input as HTMLInputElement).value;
+			const prompt = (this.input as HTMLInputElement).value;
+			if (prompt === '') { return; }
+			(this.input as HTMLInputElement).value = '';
+			dom.append(this.content, $('h2', {}, 'User: ' + prompt));
+			const response = dom.append(this.content, $('p', {}, 'AI: '));
+			this.codentService.ask(prompt, (chunk: string) => response.innerText += chunk);
 		};
 	}
 
 	private createList(listContainer: HTMLElement): void {
-		this.codentService.run();
 	}
 }

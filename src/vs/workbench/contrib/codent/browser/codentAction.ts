@@ -5,6 +5,7 @@
 
 import { localize2 } from '../../../../nls.js';
 import { Action2, registerAction2 } from '../../../../platform/actions/common/actions.js';
+import { CodentSecretKey } from '../../../../platform/codent/common/CodentTypes.js';
 import { ServicesAccessor } from '../../../../platform/instantiation/common/instantiation.js';
 import { IQuickInputService } from '../../../../platform/quickinput/common/quickInput.js';
 import { ISecretStorageService } from '../../../../platform/secrets/common/secrets.js';
@@ -53,10 +54,10 @@ export class CodentAPIAction extends Action2 {
 			return;
 		}
 		console.log(result);
-		let key = await secretStorageService.get('CodentSecretKey');
+		let key = await secretStorageService.get(CodentSecretKey);
 		console.log(key);
-		await secretStorageService.set('CodentSecretKey', result);
-		key = await secretStorageService.get('CodentSecretKey');
+		await secretStorageService.set(CodentSecretKey, result);
+		key = await secretStorageService.get(CodentSecretKey);
 		console.log(key);
 	}
 }
