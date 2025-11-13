@@ -10,9 +10,13 @@
 }
 
 .codent-list {
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	word-wrap: break-word;
+	white-space: normal;
+	flex: 1 1 0;
 }
 
 .codent-input {
-	height: 30%;
+	min-height: 4rem;
 }

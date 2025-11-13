@@ -5,7 +5,9 @@
 
 import * as dom from '../../../../base/browser/dom.js';
 import { Disposable } from '../../../../base/common/lifecycle.js';
+import { ICommandService } from '../../../../platform/commands/common/commands.js';
 import { ICodentService } from '../common/codentService.js';
+import { CodentAPIAction } from './codentAction.js';
 import './media/codent.css';
 
 const $ = dom.$;
@@ -21,7 +23,8 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 	input!: HTMLElement;
 	content!: HTMLElement;
 	constructor(
-		@ICodentService private readonly codentService: ICodentService
+		@ICodentService private readonly codentService: ICodentService,
+		@ICommandService private readonly commadnService: ICommandService
 	) {
 		super();
 	}
@@ -40,15 +43,16 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 			const prompt = (this.input as HTMLInputElement).value;
 			if (prompt === '') { return; }
 			(this.input as HTMLInputElement).value = '';
-			dom.append(this.content, $('h2', {}, 'User: ' + prompt));
-			const response = dom.append(this.content, $('p', {}, 'AI: '));
+			dom.append(this.listContainer, $('h2', {}, 'User: ' + prompt));
+			const response = dom.append(this.listContainer, $('p', {}, 'AI: '));
 			this.codentService.ask(prompt, (chunk: string) => response.innerText += chunk);
+		};
+		const setKeyButton = dom.append(container, $('button', {}, 'Set API Key'));
+		setKeyButton.onclick = async () => {
+			await this.commadnService.executeCommand(CodentAPIAction.ID);
 		};
 	}
 
 	private createList(listContainer: HTMLElement): void {
-		for (let i = 0; i < 100; i++) {
-			dom.append(listContainer, $('p', {}, `line: ${i}`));
-		}
 	}
 }
