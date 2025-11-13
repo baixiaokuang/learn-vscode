@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.codent {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.codent-list {
+	overflow: auto;
+}
+
+.codent-input {
+	height: 30%;
+}

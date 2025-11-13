@@ -6,6 +6,7 @@
 import * as dom from '../../../../base/browser/dom.js';
 import { Disposable } from '../../../../base/common/lifecycle.js';
 import { ICodentService } from '../common/codentService.js';
+import './media/codent.css';
 
 const $ = dom.$;
 
@@ -26,15 +27,14 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 	}
 
 	render(parent: HTMLElement) {
-		this.container = dom.append(parent, $('.interactive-session'));
-		this.content = dom.append(this.container, $('p.title'));
-		this.listContainer = dom.append(this.container, $(`.interactive-list`));
+		this.container = dom.append(parent, $('.codent'));
+		this.listContainer = dom.append(this.container, $('div.codent-list'));
 		this.createInput(this.container);
 		this.createList(this.listContainer);
 	}
 
 	private createInput(container: HTMLElement, options?: { renderFollowups: boolean; renderStyle?: 'compact' | 'minimal' }): void {
-		this.input = dom.append(container, $('input'));
+		this.input = dom.append(container, $('input.codent-input'));
 		const button = dom.append(container, $('button', {}, 'Send'));
 		button.onclick = () => {
 			const prompt = (this.input as HTMLInputElement).value;
@@ -47,5 +47,8 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 	}
 
 	private createList(listContainer: HTMLElement): void {
+		for (let i = 0; i < 100; i++) {
+			dom.append(listContainer, $('p', {}, `line: ${i}`));
+		}
 	}
 }
