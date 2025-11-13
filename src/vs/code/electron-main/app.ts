@@ -122,8 +122,8 @@ import { NativeMcpDiscoveryHelperService } from '../../platform/mcp/node/nativeM
 import { IWebContentExtractorService } from '../../platform/webContentExtractor/common/webContentExtractor.js';
 import { NativeWebContentExtractorService } from '../../platform/webContentExtractor/electron-main/webContentExtractorService.js';
 import ErrorTelemetry from '../../platform/telemetry/electron-main/errorTelemetry.js';
-import { CodentChannel } from '../../platform/codent/electron-main/CodentChannel.js';
-import { CodentChannelId } from '../../platform/codent/common/CodentTypes.js';
+import { CodentChannel } from '../../platform/codent/electron-main/codentChannel.js';
+import { CodentChannelId } from '../../platform/codent/common/codentTypes.js';
 
 /**
  * The main VS Code application. There will only ever be one instance,

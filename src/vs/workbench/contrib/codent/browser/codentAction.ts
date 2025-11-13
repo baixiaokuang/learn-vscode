@@ -5,7 +5,7 @@
 
 import { localize2 } from '../../../../nls.js';
 import { Action2, registerAction2 } from '../../../../platform/actions/common/actions.js';
-import { CodentSecretKey } from '../../../../platform/codent/common/CodentTypes.js';
+import { CodentSecretKey } from '../../../../platform/codent/common/codentTypes.js';
 import { ServicesAccessor } from '../../../../platform/instantiation/common/instantiation.js';
 import { IQuickInputService } from '../../../../platform/quickinput/common/quickInput.js';
 import { ISecretStorageService } from '../../../../platform/secrets/common/secrets.js';

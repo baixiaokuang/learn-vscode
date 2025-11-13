@@ -7,7 +7,7 @@ import { CancellationToken } from '../../../base/common/cancellation.js';
 import { Emitter, Event } from '../../../base/common/event.js';
 import { IServerChannel } from '../../../base/parts/ipc/common/ipc.js';
 import { streamText, createGateway, ModelMessage } from 'ai';
-import { CodentAskParams, CodentCommand } from '../common/CodentTypes.js';
+import { CodentAskParams, CodentCommand } from '../common/codentTypes.js';
 
 export class CodentChannel implements IServerChannel {
 	private readonly emitter = new Emitter<string>;

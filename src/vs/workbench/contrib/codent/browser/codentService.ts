@@ -6,7 +6,7 @@ import { Disposable } from '../../../../base/common/lifecycle.js';
 import { URI } from '../../../../base/common/uri.js';
 import { IChannel } from '../../../../base/parts/ipc/common/ipc.js';
 import { isCodeEditor, isDiffEditor } from '../../../../editor/browser/editorBrowser.js';
-import { CodentAskParams, CodentChannelId, CodentCommand, CodentSecretKey } from '../../../../platform/codent/common/CodentTypes.js';
+import { CodentAskParams, CodentChannelId, CodentCommand, CodentSecretKey } from '../../../../platform/codent/common/codentTypes.js';
 import { createDecorator } from '../../../../platform/instantiation/common/instantiation.js';
 import { IMainProcessService } from '../../../../platform/ipc/common/mainProcessService.js';
 import { ISecretStorageService } from '../../../../platform/secrets/common/secrets.js';
