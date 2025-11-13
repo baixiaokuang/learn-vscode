@@ -6,7 +6,7 @@
 import * as dom from '../../../../base/browser/dom.js';
 import { Disposable } from '../../../../base/common/lifecycle.js';
 import { ICommandService } from '../../../../platform/commands/common/commands.js';
-import { ICodentService } from '../common/codentService.js';
+import { ICodentService } from './codentService.js';
 import { CodentAPIAction } from './codentAction.js';
 import './media/codent.css';
 

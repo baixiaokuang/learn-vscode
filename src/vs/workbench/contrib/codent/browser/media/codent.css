@@ -10,6 +10,7 @@
 }
 
 .codent-list {
+	user-select: text;
 	overflow-y: auto;
 	overflow-x: hidden;
 	word-wrap: break-word;
