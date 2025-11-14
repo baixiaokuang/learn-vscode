@@ -12,6 +12,10 @@ import { IMainProcessService } from '../../../../platform/ipc/common/mainProcess
 import { ISecretStorageService } from '../../../../platform/secrets/common/secrets.js';
 import { IEditorService } from '../../../services/editor/common/editorService.js';
 import { Range } from '../../../../editor/common/core/range.js';
+import { ISingleEditOperation } from '../../../../editor/common/core/editOperation.js';
+import { IResourceDiffEditorInput } from '../../../common/editor.js';
+import { IModelService } from '../../../../editor/common/services/model.js';
+import { ITextModelService, ITextModelContentProvider } from '../../../../editor/common/services/resolverService.js';
 
 
 export interface ICodentService {
@@ -26,6 +30,7 @@ export const ICodentService = createDecorator<ICodentService>('ICodentService');
 export class CodentService extends Disposable implements ICodentService {
 	readonly _serviceBrand: undefined;
 	private readonly channel: IChannel;
+	private readonly editPreviewContent = new Map<string, string>();
 	private listeners: {
 		onText: (chunk: string) => void;
 		onEdit: (edit: CodentEditResult) => void;
@@ -38,8 +43,15 @@ export class CodentService extends Disposable implements ICodentService {
 		@IMainProcessService private readonly mainProcessService: IMainProcessService,
 		@ISecretStorageService private readonly secretStorageService: ISecretStorageService,
 		@IEditorService private readonly editorService: IEditorService,
+		@IModelService private readonly modelService: IModelService,
+		@ITextModelService private readonly textModelService: ITextModelService,
 	) {
 		super();
+		const provider: ITextModelContentProvider = {
+			provideTextContent: (resource) => this.providePreviewContent(resource)
+		};
+		this._register(this.textModelService.registerTextModelContentProvider('codent-edit-before', provider));
+		this._register(this.textModelService.registerTextModelContentProvider('codent-edit-after', provider));
 		this.channel = this.mainProcessService.getChannel(CodentChannelId);
 		this._register(this.channel.listen<string>('onText')(e => {
 			console.log(e);
@@ -57,13 +69,37 @@ export class CodentService extends Disposable implements ICodentService {
 				return;
 			}
 
-			const operations = edit.edits.map(hunk => ({
+			const originalUri = URI.parse(edit.resource);
+			const originalText = codeEditor.getModel()?.getValue()!;
+
+			const operations: ISingleEditOperation[] = edit.edits.map(hunk => ({
 				range: new Range(hunk.startLine, 1, hunk.endLine, Number.MAX_SAFE_INTEGER),
 				text: hunk.replacement,
 				forceMoveMarkers: true
 			}));
 
 			codeEditor.executeEdits('codent', operations);
+
+
+			const modifiedText = codeEditor.getModel()?.getValue()!;
+			const tempUri1 = originalUri.with({
+				scheme: 'codent-edit-before',
+				fragment: String(Date.now())
+			});
+			const tempUri2 = originalUri.with({
+				scheme: 'codent-edit-after',
+				fragment: String(Date.now())
+			});
+
+			this.editPreviewContent.set(tempUri1.toString(), originalText);
+			this.editPreviewContent.set(tempUri2.toString(), modifiedText);
+
+			const diffInput: IResourceDiffEditorInput = {
+				original: { resource: tempUri1 },
+				modified: { resource: tempUri2 }
+			};
+
+			await this.editorService.openEditor(diffInput);
 		}));
 	}
 	async ask(prompt: string, cb: (chunk: string) => void) {
@@ -94,6 +130,20 @@ export class CodentService extends Disposable implements ICodentService {
 	async run() {
 		console.log('Running CodentService');
 		this.channel.call('sendMessage', 'Hello from workbench!');
+	}
+
+	private async providePreviewContent(resource: URI) {
+		const key = resource.toString();
+		const text = this.editPreviewContent.get(key);
+		if (text === undefined) {
+			throw new Error(`No preview content stored for ${resource.toString()}`);
+		}
+		let model = this.modelService.getModel(resource);
+		if (!model) {
+			model = this.modelService.createModel(text, null, resource);
+		}
+		this.editPreviewContent.delete(key);
+		return model;
 	}
 
 	private getActiveFileContent(): { uri: URI; value: string } | undefined {
