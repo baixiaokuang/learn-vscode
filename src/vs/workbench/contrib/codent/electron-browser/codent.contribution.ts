@@ -12,6 +12,7 @@ import { IViewContainersRegistry, IViewDescriptor, IViewsRegistry, ViewContainer
 import './codentAction.js';
 import { CodentService, ICodentService } from './codentService.js';
 import { CodentViewPane } from './codentViewPane.js';
+import { CodentFileService, ICodentFileService } from './codentFileService.js';
 
 const CHAT_SIDEBAR_PANEL_ID = 'workbench.panel.codent';
 const chatViewContainer: ViewContainer = Registry.as<IViewContainersRegistry>(ViewExtensions.ViewContainersRegistry).registerViewContainer({
@@ -38,3 +39,4 @@ const chatViewDescriptor: IViewDescriptor[] = [{
 Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry).registerViews(chatViewDescriptor, chatViewContainer);
 
 registerSingleton(ICodentService, CodentService, InstantiationType.Delayed);
+registerSingleton(ICodentFileService, CodentFileService, InstantiationType.Delayed);

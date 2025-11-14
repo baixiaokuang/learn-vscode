@@ -10,6 +10,7 @@ import { ICodentService } from './codentService.js';
 import { CodentAPIAction } from './codentAction.js';
 import './media/codent.css';
 import { CodentEditResult } from '../../../../platform/codent/common/codentTypes.js';
+import { ICodentFileService } from './codentFileService.js';
 
 const $ = dom.$;
 
@@ -26,6 +27,7 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 	constructor(
 		@ICodentService private readonly codentService: ICodentService,
 		@ICommandService private readonly commandService: ICommandService,
+		@ICodentFileService private readonly codentFileService: ICodentFileService,
 	) {
 		super();
 	}
@@ -46,7 +48,12 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 			(this.input as HTMLInputElement).value = '';
 			dom.append(this.listContainer, $('h2', {}, 'User: ' + prompt));
 			const response = dom.append(this.listContainer, $('p', {}, 'AI: '));
-			this.codentService.ask(prompt, (chunk: string) => response.innerText += chunk);
+
+			const context = this.codentFileService.getActiveFileContent();
+			const promptWithFile = context
+				? `${prompt}\n\n---\n${context.uri.toString()}\n${context.value}`
+				: prompt;
+			this.codentService.ask(promptWithFile, (chunk: string) => response.innerText += chunk);
 		};
 		const editButton = dom.append(container, $('button', {}, 'Edit'));
 		editButton.onclick = () => {
@@ -55,9 +62,16 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 			(this.input as HTMLInputElement).value = '';
 			dom.append(this.listContainer, $('h2', {}, 'User: ' + prompt));
 			const response = dom.append(this.listContainer, $('p', {}, 'AI: '));
-			this.codentService.edit(prompt, (edit: CodentEditResult) => {
+
+			const context = this.codentFileService.getActiveFileContent();
+			const promptWithFile = context
+				? `${prompt}\n\n---\n${context.uri.toString()}\n${context.value}`
+				: prompt;
+
+			this.codentService.edit(promptWithFile, async (edit: CodentEditResult) => {
 				console.log(edit);
 				response.innerText += JSON.stringify(edit, null, 2);
+				await this.codentFileService.handleEdit(edit);
 			});
 		};
 		const setKeyButton = dom.append(container, $('button', {}, 'Set API Key'));
