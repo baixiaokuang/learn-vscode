@@ -6,15 +6,17 @@ import { Disposable } from '../../../../base/common/lifecycle.js';
 import { URI } from '../../../../base/common/uri.js';
 import { IChannel } from '../../../../base/parts/ipc/common/ipc.js';
 import { isCodeEditor, isDiffEditor } from '../../../../editor/browser/editorBrowser.js';
-import { CodentAskParams, CodentChannelId, CodentCommand, CodentSecretKey } from '../../../../platform/codent/common/codentTypes.js';
+import { CodentAskParams, CodentChannelId, CodentCommand, CodentEditResult, CodentSecretKey } from '../../../../platform/codent/common/codentTypes.js';
 import { createDecorator } from '../../../../platform/instantiation/common/instantiation.js';
 import { IMainProcessService } from '../../../../platform/ipc/common/mainProcessService.js';
 import { ISecretStorageService } from '../../../../platform/secrets/common/secrets.js';
 import { IEditorService } from '../../../services/editor/common/editorService.js';
 
+
 export interface ICodentService {
 	readonly _serviceBrand: undefined;
 	ask(prompt: string, cb: (chunk: string) => void): Promise<void>;
+	edit(prompt: string, cb: (edit: CodentEditResult) => void): Promise<void>;
 	run(): Promise<void>;
 	sendRequest(apiKey: string, prompt: string): Promise<void>;
 }
@@ -23,7 +25,13 @@ export const ICodentService = createDecorator<ICodentService>('ICodentService');
 export class CodentService extends Disposable implements ICodentService {
 	readonly _serviceBrand: undefined;
 	private readonly channel: IChannel;
-	private listener: (chunk: string) => void = () => { };
+	private listeners: {
+		onText: (chunk: string) => void;
+		onEdit: (edit: CodentEditResult) => void;
+	} = {
+			onText: () => { },
+			onEdit: () => { }
+		};
 
 	constructor(
 		@IMainProcessService private readonly mainProcessService: IMainProcessService,
@@ -34,19 +42,32 @@ export class CodentService extends Disposable implements ICodentService {
 		this.channel = this.mainProcessService.getChannel(CodentChannelId);
 		this._register(this.channel.listen<string>('onText')(e => {
 			console.log(e);
-			this.listener(e);
+			this.listeners.onText(e);
+		}));
+		this._register(this.channel.listen<CodentEditResult>('onEdit')(e => {
+			console.log(e);
+			this.listeners.onEdit(e);
 		}));
 	}
 	async ask(prompt: string, cb: (chunk: string) => void) {
 		const apiKey = await this.secretStorageService.get(CodentSecretKey);
-		console.log(apiKey);
-		this.listener = cb;
+		this.listeners.onText = cb;
 		const context = this.getActiveFileContent();
 		const body = context
 			? `${prompt}\n\n---\n${context.uri.toString()}\n${context.value}`
 			: prompt;
-		console.log(body);
 		this.channel.call<CodentAskParams>('ask' satisfies CodentCommand, { prompt: body, apiKey });
+	}
+
+	async edit(prompt: string, cb: (edit: CodentEditResult) => void) {
+		const apiKey = await this.secretStorageService.get(CodentSecretKey);
+		console.log(apiKey);
+		this.listeners.onEdit = cb;
+		const context = this.getActiveFileContent();
+		const body = context
+			? `${prompt}\n\n---\n${context.uri.toString()}\n${context.value}`
+			: prompt;
+		this.channel.call<CodentAskParams>('edit' satisfies CodentCommand, { prompt: body, apiKey });
 	}
 
 	async sendRequest(apiKey: string, prompt: string): Promise<void> {
@@ -60,7 +81,6 @@ export class CodentService extends Disposable implements ICodentService {
 
 	private getActiveFileContent(): { uri: URI; value: string } | undefined {
 		const control = this.editorService.activeTextEditorControl;
-		console.log(control);
 		const codeEditor = isCodeEditor(control)
 			? control
 			: isDiffEditor(control)

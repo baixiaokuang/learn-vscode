@@ -6,11 +6,24 @@
 import { CancellationToken } from '../../../base/common/cancellation.js';
 import { Emitter, Event } from '../../../base/common/event.js';
 import { IServerChannel } from '../../../base/parts/ipc/common/ipc.js';
-import { streamText, createGateway, ModelMessage } from 'ai';
-import { CodentAskParams, CodentCommand } from '../common/codentTypes.js';
+import { streamText, createGateway, ModelMessage, generateObject } from 'ai';
+import { CodentAskParams, CodentCommand, CodentEditResult } from '../common/codentTypes.js';
+import { z } from 'zod';
+
+const CodentDiffSchema = z.object({
+	resource: z.string(),
+	edits: z.array(z.object({
+		startLine: z.number(),       // 1-based inclusive
+		endLine: z.number(),         // 1-based inclusive
+		replacement: z.string()     // literal text to insert
+	}))
+});
 
 export class CodentChannel implements IServerChannel {
-	private readonly emitter = new Emitter<string>;
+	private readonly emitters = {
+		text: new Emitter<string>,
+		edit: new Emitter<CodentEditResult>
+	};
 	async call(ctx: string, command: CodentCommand, arg?: any, cancellationToken?: CancellationToken): Promise<any> {
 		console.log(command);
 		switch (command) {
@@ -25,26 +38,28 @@ export class CodentChannel implements IServerChannel {
 					prompt: messages,
 				});
 				for await (const chunk of textStream) {
-					this.emitter.fire(chunk);
+					this.emitters.text.fire(chunk);
 				}
 				break;
 			}
-			case 'sendMessage': {
-				this.emitter.fire('Hello from main!');
-				const apiKey = process.env.VERCEL_KEY;
-				console.log(apiKey);
-
+			case 'edit': {
+				const { prompt, apiKey } = arg as CodentAskParams;
 				const gateway = createGateway({ apiKey });
 
-				const prompt: ModelMessage[] = [{ role: 'user', content: 'What is React?' }];
-
-				const { textStream } = streamText({
+				const messages: ModelMessage[] = [
+					{ role: 'system', content: 'You need to edit the given file according to user\'s prompt, return answer in a diff format object, the startLine and endLine are 1-based inclusive.' },
+					{ role: 'user', content: prompt }
+				];
+				const { object } = await generateObject({
 					model: gateway('gpt-5-nano'),
-					prompt,
+					schema: CodentDiffSchema,
+					prompt: messages,
 				});
-				for await (const chunk of textStream) {
-					this.emitter.fire(chunk);
-				}
+				console.log(object);
+				this.emitters.edit.fire(object);
+				break;
+			}
+			case 'sendMessage': {
 				break;
 			}
 			case 'sendRequest': {
@@ -54,7 +69,7 @@ export class CodentChannel implements IServerChannel {
 		}
 	}
 	listen(ctx: string, event: string, arg?: any): Event<any> {
-		return this.emitter.event;
+		if (event === 'onText') { return this.emitters.text.event; }
+		else { return this.emitters.edit.event; }
 	}
-
 }

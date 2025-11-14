@@ -847,7 +847,8 @@ export default tseslint.config(
 						'@xterm/xterm',
 						'yauzl',
 						'yazl',
-						'zlib'
+						'zlib',
+						'zod',
 					]
 				},
 				{
