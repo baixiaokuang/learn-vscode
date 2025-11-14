@@ -25,7 +25,7 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 	content!: HTMLElement;
 	constructor(
 		@ICodentService private readonly codentService: ICodentService,
-		@ICommandService private readonly commadnService: ICommandService
+		@ICommandService private readonly commandService: ICommandService,
 	) {
 		super();
 	}
@@ -62,7 +62,7 @@ export class CodentWidget extends Disposable implements ICodentWidget {
 		};
 		const setKeyButton = dom.append(container, $('button', {}, 'Set API Key'));
 		setKeyButton.onclick = async () => {
-			await this.commadnService.executeCommand(CodentAPIAction.ID);
+			await this.commandService.executeCommand(CodentAPIAction.ID);
 		};
 	}
 

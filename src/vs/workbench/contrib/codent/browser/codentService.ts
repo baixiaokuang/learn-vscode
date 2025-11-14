@@ -11,6 +11,7 @@ import { createDecorator } from '../../../../platform/instantiation/common/insta
 import { IMainProcessService } from '../../../../platform/ipc/common/mainProcessService.js';
 import { ISecretStorageService } from '../../../../platform/secrets/common/secrets.js';
 import { IEditorService } from '../../../services/editor/common/editorService.js';
+import { Range } from '../../../../editor/common/core/range.js';
 
 
 export interface ICodentService {
@@ -36,7 +37,7 @@ export class CodentService extends Disposable implements ICodentService {
 	constructor(
 		@IMainProcessService private readonly mainProcessService: IMainProcessService,
 		@ISecretStorageService private readonly secretStorageService: ISecretStorageService,
-		@IEditorService private readonly editorService: IEditorService
+		@IEditorService private readonly editorService: IEditorService,
 	) {
 		super();
 		this.channel = this.mainProcessService.getChannel(CodentChannelId);
@@ -44,9 +45,25 @@ export class CodentService extends Disposable implements ICodentService {
 			console.log(e);
 			this.listeners.onText(e);
 		}));
-		this._register(this.channel.listen<CodentEditResult>('onEdit')(e => {
-			console.log(e);
-			this.listeners.onEdit(e);
+		this._register(this.channel.listen<CodentEditResult>('onEdit')(async edit => {
+			console.log(edit);
+			this.listeners.onEdit(edit);
+
+			const uri = URI.parse(edit.resource);
+			const editor = await this.editorService.openEditor({ resource: uri });
+			const codeEditor = editor?.getControl();
+
+			if (!isCodeEditor(codeEditor)) {
+				return;
+			}
+
+			const operations = edit.edits.map(hunk => ({
+				range: new Range(hunk.startLine, 1, hunk.endLine, Number.MAX_SAFE_INTEGER),
+				text: hunk.replacement,
+				forceMoveMarkers: true
+			}));
+
+			codeEditor.executeEdits('codent', operations);
 		}));
 	}
 	async ask(prompt: string, cb: (chunk: string) => void) {
